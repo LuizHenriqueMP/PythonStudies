@@ -1,6 +1,6 @@
 import pandas as pd
 
-caminho_dados = "C:/Users/usuario/Documents/Programas/Python/CursoAsimovPandas/csv/2023_Viagem.csv"
+caminho_dados = "C:/Users/usuario/Documents/Programas/csv/2023_Viagem.csv"
 
 df_viagens = pd.read_csv(caminho_dados, encoding="Windows-1252", sep=";")
 pd.set_option('display.max_columns', None)

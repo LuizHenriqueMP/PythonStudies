@@ -6,8 +6,9 @@ df_viagens = pd.read_csv(caminho_dados, encoding="Windows-1252", sep=";", decima
 
 df_viagens['Despesas'] = df_viagens['Valor diárias'] + df_viagens['Valor passagens'] + df_viagens['Valor outros gastos']
 
-# print( (df_viagens['Cargo'].value_counts(normalize=True) * 100).rename("Proporção de viagens").reset_index())
+viagens_por_cargo = (df_viagens['Cargo'].value_counts(normalize=True) * 100).rename("Proporção de viagens").reset_index()
 
-pd.set_option("display.float_format", "{:.2f}".format)
+filtro_1pct = viagens_por_cargo['Proporção de viagens'] > 1
+filtro_tec = viagens_por_cargo['Cargo'].str.startswith('TECNICO')
 
-print( df_viagens.groupby("Cargo")['Despesas'].first().reset_index().sort_values(by="Despesas", ascending=False) )
+print(viagens_por_cargo[filtro_tec | filtro_1pct])
