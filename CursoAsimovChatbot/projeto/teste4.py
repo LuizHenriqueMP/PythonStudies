@@ -3,10 +3,12 @@ from langchain_groq import ChatGroq
 from langchain.prompts import ChatPromptTemplate
 from colorist import Color
 
-api_key = "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"
+import apikey
+api_key = apikey.api_key
+
 os.environ['GROQ_API_KEY'] = api_key
 
-chat = ChatGroq(model='llama-3.1-70b-versatile')
+chat = ChatGroq(model='llama-3.3-70b-versatile')
 mensagens = []
 
 def resposta_bot(mensagens,x):
